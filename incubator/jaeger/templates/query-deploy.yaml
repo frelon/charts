@@ -67,7 +67,7 @@ spec:
             valueFrom:
               secretKeyRef:
                 name: {{ if .Values.storage.cassandra.existingSecret }}{{ .Values.storage.cassandra.existingSecret }}{{- else }}{{ include "jaeger.fullname" . }}-cassandra{{- end }}
-                key: password
+                key: {{ .Values.storage.elasticsearch.existingSecretKey | default "password" }}
           {{- end }}
           {{- if eq .Values.storage.type "elasticsearch" }}
           {{- if .Values.storage.elasticsearch.usePassword }}

@@ -75,7 +75,7 @@ spec:
             valueFrom:
               secretKeyRef:
                 name: {{ if .Values.storage.elasticsearch.existingSecret }}{{ .Values.storage.elasticsearch.existingSecret }}{{- else }}{{ include "jaeger.fullname" . }}-elasticsearch{{- end }}
-                key: password
+                key: {{ .Values.storage.elasticsearch.existingSecretKey | default "password" }}
           {{- end }}
           - name: ES_SERVER_URLS
             value: {{ template "elasticsearch.client.url" . }}

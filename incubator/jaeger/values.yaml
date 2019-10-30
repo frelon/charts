@@ -51,6 +51,7 @@ storage:
     password: changeme
     ## Use existing secret (ignores previous password)
     # existingSecret:
+    # existingSecretKey: password
     nodesWanOnly: false
 
 # Begin: Override values on the Cassandra subchart to customize for Jaeger
